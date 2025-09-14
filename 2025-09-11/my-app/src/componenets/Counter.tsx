@@ -4,9 +4,8 @@ import "../App.css"
 function Counter() {
   const [count, setCount] = useState(0)
 
-
-  function increaseCounter(number: number){
-    setCount(count=>count+number)
+  function increaseCounter(number: number) {
+    setCount(count => count + number)
   }
   return (
     <>
@@ -22,10 +21,9 @@ function Counter() {
         <button onClick={() => increaseCounter(-25)}>-25</button>
         <button onClick={() => increaseCounter(-50)}>-50</button>
         <button onClick={() => increaseCounter(-100)}>-100</button>
-          <br />
-          count is {count}
-        
-        </div>
+        <br />
+        count is {count}
+      </div>
     </>
   )
 }
