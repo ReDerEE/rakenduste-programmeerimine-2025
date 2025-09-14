@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 function Dice() {
     const [dieNum, setDie] = useState(1)
     function rollDice(){
-        setDie(Math.floor(Math.random()*7))
+        setDie(Math.ceil(Math.random()*6))
     }
 
 
