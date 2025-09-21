@@ -14,7 +14,7 @@ const router = createHashRouter([
     element: <App />,
     children: [
       {
-        path: "muiButton",
+        path: "button",
         element: <MuiButton />,
       },
       {
@@ -25,16 +25,9 @@ const router = createHashRouter([
         path: "about",
         element: <About />,
       },
-      {
-        path: "navbar",
-        element: <Navbar />,
-      },
-      {path: "",
-        element: <Home />
-      }
+      { path: "", element: <Home /> },
     ],
   },
-  
 ])
 
 createRoot(document.getElementById("root")!).render(
