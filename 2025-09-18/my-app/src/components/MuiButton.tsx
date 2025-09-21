@@ -10,7 +10,7 @@ function MuiButton() {
       <div id="muiButton">
         <Button
           variant="contained"
-          onClick={() => setCounter(counter+1)}
+          onClick={() => setCounter(counter + 1)}
         >
           sii olema njupp
         </Button>
@@ -20,5 +20,6 @@ function MuiButton() {
     </div>
   )
 }
+
 
 export default MuiButton
