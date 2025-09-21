@@ -5,8 +5,9 @@ import MuiButton from "./components/MuiButton.tsx"
 import Something from "./components/Something.tsx"
 import About from "./components/About.tsx"
 import Home from "./components/Home.tsx"
-import Navbar from "./components/Navbar.tsx"
 import App from "./App.tsx"
+import { createTheme, ThemeProvider } from "@mui/material"
+import { deepPurple } from "@mui/material/colors"
 
 const router = createHashRouter([
   {
@@ -30,6 +31,16 @@ const router = createHashRouter([
   },
 ])
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: deepPurple[500],
+    },
+  },
+})
+
 createRoot(document.getElementById("root")!).render(
-  <RouterProvider router={router} />,
+  <ThemeProvider theme={theme}>
+    <RouterProvider router={router} />
+  </ThemeProvider>,
 )
