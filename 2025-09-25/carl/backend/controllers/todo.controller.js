@@ -1,3 +1,5 @@
+const {validationResult} = require("express-validator")
+
 const todos = [
   {
     id: "7d613b93-fa3e-4ef3-a9d2-e09e5ca6e4e6",
@@ -37,21 +39,18 @@ class todoData {
 }
 
 exports.create = (req, res) => {
-  if (req.body.title && req.body.description) {
+//   if (req.body.title && req.body.description) {
+const errors = validationResult(req)
+if(!errors.isEmpty()){
+    return res.sendStatus(400)
+}
     newTodo = new todoData()
     newTodo.id = crypto.randomUUID()
     newTodo.title = req.body.title
     newTodo.description = req.body.description
     newTodo.createdAt = Date.now()
     todos.push(newTodo)
-    //   res.send(req.params.name)
-    //   console.log(req.body)
-    //   const { name } = req.body
-    //   console.log({ name })  
     res.sendStatus(200)
-  } else {
-    res.sendStatus(400)
-  }
 }
 
 exports.read = (req, res) => {
@@ -59,18 +58,24 @@ exports.read = (req, res) => {
 }
 
 exports.update = (req, res) => {
-  if (req.body.updateTitle && req.body.updateDescription) {
+
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        return res.sendStatus(400)
+    }
     updateTodo = todos.find(todo => (todo.id = req.body.id))
     updateTodo.title = req.body.updateTitle
     updateTodo.description = req.body.updateDescription
     updateTodo.updatedAt = Date.now()
     res.sendStatus(200)
-  } else {
-    res.sendStatus(400)
-  }
+
 }
 
 exports.delete = (req, res) => {
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        return res.sendStatus(400)
+    }
   deleteTodo = todos.find(todo => (todo.id = req.body.id))
   deleteTodo.deleted = true
   deleteTodo.updatedAt = Date.now()
