@@ -11,6 +11,7 @@ router.use(todoRouteMiddleware)
 
 // /cats/ Get endpoint level middleware
 router.get("/", todoController.read)
+router.get("/adminRead", todoController.readAdmin)
 router.post(
   "/",
   [body("title").notEmpty(), body("description").notEmpty()],

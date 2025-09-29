@@ -44,7 +44,7 @@ exports.read = (req, res) => {
 }
 
 exports.update = (req, res) => {
-  updateCat = cats.find(cat => (cat.id = req.body.id))
+  updateCat = cats.find(cat => (cat.id == req.body.id))
   if (req.body.updateName) {
     updateCat.name = req.body.updateName
     updateCat.updatedAt = Date.now()
@@ -55,7 +55,7 @@ exports.update = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-  deleteCat = cats.find(cat => (cat.id = req.body.id))
+  deleteCat = cats.find(cat => (cat.id == req.body.id))
   deleteCat.deleted = true
   deleteCat.updatedAt = Date.now()
   res.sendStatus(200)

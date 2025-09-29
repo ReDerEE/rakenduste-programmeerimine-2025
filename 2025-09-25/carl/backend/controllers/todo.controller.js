@@ -3,16 +3,16 @@ const {validationResult} = require("express-validator")
 const todos = [
   {
     id: "7d613b93-fa3e-4ef3-a9d2-e09e5ca6e4e6",
-    title: "schizoDev",
-    description: "this dev shit",
+    title: "TeorInf",
+    description: "AAAAAAAAAAAAAAAAAA",
     createdAt: 1727098800585,
     updatedAt: null,
     deleted: false,
   },
   {
     id: "2dc9ce08-d345-4fed-8560-4c6b66fb0836",
-    title: "Kitty",
-    description: "a",
+    title: "Robootika",
+    description: "Tee pomm",
     createdAt: 1727098952739,
     updatedAt: null,
     deleted: false,
@@ -53,8 +53,12 @@ if(!errors.isEmpty()){
     res.sendStatus(200)
 }
 
-exports.read = (req, res) => {
+exports.readAdmin = (req, res) => {
   res.send(todos)
+}
+
+exports.read = (req, res)=>{
+    res.send(todos.filter(todo => todo.deleted == false))
 }
 
 exports.update = (req, res) => {
@@ -63,7 +67,7 @@ exports.update = (req, res) => {
     if(!errors.isEmpty()){
         return res.sendStatus(400)
     }
-    updateTodo = todos.find(todo => (todo.id = req.body.id))
+    updateTodo = todos.find(todo => (todo.id == req.body.id))
     updateTodo.title = req.body.updateTitle
     updateTodo.description = req.body.updateDescription
     updateTodo.updatedAt = Date.now()
@@ -76,8 +80,8 @@ exports.delete = (req, res) => {
     if(!errors.isEmpty()){
         return res.sendStatus(400)
     }
-  deleteTodo = todos.find(todo => (todo.id = req.body.id))
-  deleteTodo.deleted = true
+  deleteTodo = todos.find(todo => (todo.id == req.body.id))
+  deleteTodo.deleted = !deleteTodo.deleted
   deleteTodo.updatedAt = Date.now()
   res.sendStatus(200)
 }

@@ -1,8 +1,10 @@
 import "./App.css"
-import Cats from "./components/Cats"
+import Todo from "./components/TODO/Todo"
+// import Cats from "./components/Cats"
+
 
 function App() {
-  return <Cats />
+  return <Todo />
 }
 
 export default App
