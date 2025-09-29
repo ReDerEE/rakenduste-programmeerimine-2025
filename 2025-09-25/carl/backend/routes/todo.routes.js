@@ -19,9 +19,13 @@ router.post(
 )
 router.put(
   "/",
-  [body("id").notEmpty(), body("updateTitle").notEmpty(), body("updateDescription").notEmpty()],
+  [
+    body("id").notEmpty(),
+    body("updateTitle").notEmpty(),
+    body("updateDescription").notEmpty(),
+  ],
   todoController.update,
 )
-router.delete("/",[body("id").notEmpty()] ,todoController.delete)
+router.delete("/", [body("id").notEmpty()], todoController.delete)
 
 module.exports = router
